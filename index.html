@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>森本善人 プロフィール</title>
+  <meta name="description" content="森本善人の経歴・活動紹介ページ（企業向け）">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="images/profile.jpg" alt="森本善人プロフィール写真">
+    <h1>森本善人（もりもと よしと）</h1>
+    <p>整体師・合気道YouTuber・VTuber・森本善人株式会社取締役</p>
+  </header>
+
+  <section>
+    <h2>基本情報</h2>
+    <div class="card">
+      <p>生年月日：1986年1月25日（39歳）</p>
+      <p>連絡先：042-971-2243 / 090-2423-2774</p>
+      <p>住所：〒357-0034 埼玉県飯能市東町28-1</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>経歴・学歴</h2>
+    <div class="card">
+      <ul>
+        <li>1992年：めぐみ幼稚園卒園</li>
+        <li>1998年：仏子小学校卒業</li>
+        <li>2001年：西武中学校卒業</li>
+        <li>2004年：私立明法高校卒業（38期）</li>
+        <li>アニメーター専門学校卒業</li>
+        <li>2010年～2013年：大川学園医療福祉専門学校 柔道整復学科</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>職歴</h2>
+    <div class="card">
+      <ul>
+        <li>中村プロダクション（一ヶ月程度で退職）</li>
+        <li>実践堂 絆 鍼灸整骨院（2014～2017）</li>
+        <li>ヒロ国立整骨院（一ヶ月程度）</li>
+        <li>ホンダ中古車窓拭き</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>写真ギャラリー</h2>
+    <div class="gallery" id="gallery"></div>
+
+    <!-- モーダル -->
+    <div id="modal">
+      <span id="close">&times;</span>
+      <img id="modal-img" src="">
+    </div>
+  </section>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const totalImages = 200; // 実際の画像枚数に変更
+    for (let i = 1; i <= totalImages; i++) {
+      const img = document.createElement('img');
+      const num = String(i).padStart(3, '0'); // img001.jpg 形式
+      img.src = `images/img${num}.jpg`;
+      img.alt = `森本善人写真${i}`;
+      gallery.appendChild(img);
+    }
+
+    // モーダル処理
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeBtn = document.getElementById('close');
+
+    gallery.addEventListener('click', function(e) {
+      if(e.target.tagName === 'IMG') {
+        modal.style.display = 'block';
+        modalImg.src = e.target.src;
+      }
+    });
+
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', function(e) {
+      if(e.target === modal) modal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
